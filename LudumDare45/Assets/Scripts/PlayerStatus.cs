@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : CharacterStatus
+public class PlayerStatus : MonoBehaviour
 {
     private float cdAttack = 3f;
+    private CharacterStatus Status;
 
 
     public enum States
@@ -17,7 +18,7 @@ public class PlayerStatus : CharacterStatus
         DEATH
     };
 
-    private States currentState = States.MOVIMENT;
+    public States currentState = States.MOVIMENT;
     delegate void State();
     Dictionary<States, State> statesList = new Dictionary<States, State>();
 
@@ -31,18 +32,18 @@ public class PlayerStatus : CharacterStatus
         statesList.Add(States.UPGRADE, UpgradeState);
         statesList.Add(States.DEATH, DeathState);
 
-        life = 10;
-        exp = 0;
-        damage = 2;
-        critical = 0;
-        level = 1;
+        Status.Life = 10;
+        Status.Exp = 0;
+        Status.Damage = 2;
+        Status.Critical = 0;
+        Status.Level = 1;
     }    
 
     void Update()
     {
         Debug.Log(currentState);
 
-        if (life <= 0)
+        if (Status.Life <= 0)
         {
             currentState = States.DEATH;
         }
@@ -69,6 +70,7 @@ public class PlayerStatus : CharacterStatus
 
     private void AttackState()
     {
+        //TODO: ATTACK
         currentState = States.PREATTACK;
         cdAttack = 3f;
     }

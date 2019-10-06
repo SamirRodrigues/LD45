@@ -2,31 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStatus : MonoBehaviour
+public class CharacterStatus
 {
     // GENERIC STATUS
-    protected float level;
-    protected float exp;
-    protected float life;
-    protected float damage;
-    protected float critical;
+    private float level;
+    private float exp;
+    private float life;
+    private float damage;
+    private float critical;
 
     // COMBAT TOOLS
     protected float cooldownPower;
 
-    protected void IncrementeLife(float value)
-    {
-        life += value;
-    }
-
-    protected void IncrementeDamage(float value)
-    {
-        damage += value;
-    }
-
-    protected void IncrementeCritical(float value)
-    {
-        critical += value;
-    }
-
+    public float Life { get => life; set => life += value; }
+    public float Damage { get => damage; set => damage += value; }
+    public float Critical { get => critical; set => critical += value; }
+    public float Level { get => level; set => level += value; }
+    public float Exp { get => exp; set => exp += value; }
 }
