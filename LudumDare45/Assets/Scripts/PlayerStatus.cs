@@ -22,6 +22,11 @@ public class PlayerStatus : MonoBehaviour
     delegate void State();
     Dictionary<States, State> statesList = new Dictionary<States, State>();
 
+    private void Awake()
+    {
+        Status = new CharacterStatus();
+    }
+
     void Start()
     {
         currentState = States.MOVIMENT;
